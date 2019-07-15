@@ -12,6 +12,21 @@ namespace AndrewsUtilityCode.Classes
 		/// </summary>
 		/// <param name="query">Query to output results of.</param>
 		/// <param name="message">Accompanying message to write to console.</param>
+		public static void PrintQueryResult<T>(IEnumerable<T> query, string message)
+		{
+			Console.WriteLine(System.Environment.NewLine + message);
+			foreach (var str in query)
+			{
+				Console.WriteLine(str);
+			}
+			Console.WriteLine("{0} total item(s) in list", query.Count());
+		}
+
+		/// <summary>
+		/// Executes a LINQ query and writes results to console.
+		/// </summary>
+		/// <param name="query">Query to output results of.</param>
+		/// <param name="message">Accompanying message to write to console.</param>
 		public static void PrintQueryResult(IEnumerable<string> query, string message)
 		{
 			Console.WriteLine(System.Environment.NewLine + message);

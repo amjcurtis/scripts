@@ -35,7 +35,39 @@ namespace AndrewsUtilityCode
 			IEnumerable<int> nums = arr.Skip(1).ToArray();
 			Output.PrintQueryResult(nums, "Numbers!");
 
-			Console.ReadLine();
+			// Demo PrintQueryResult using custom type
+			List<Student> studentList = new List<Student>();
+
+			studentList.Add(new Student()
+			{
+				FirstName = "Winnie",
+				LastName = "the Pooh",
+				ID = 130,
+				ExamScores = new List<int> { 79, 83, 81, 97 }
+			});
+
+			studentList.Add(new Student()
+			{
+				FirstName = "Christopher",
+				LastName = "Robin",
+				ID = 131,
+				ExamScores = new List<int> { 88, 85, 89, 95 }
+			});
+
+			IEnumerable<string> students = from student in studentList
+										  where student.FirstName != null
+										  select student.FirstName + " " + student.LastName;
+
+			Output.PrintQueryResult(students, $"Generic collection of custom type Student: ");
 		}
+	}
+
+	// Class to serve as data model for testing generic version of PrintQueryResult()
+	public class Student
+	{
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
+		public int ID { get; set; }
+		public List<int> ExamScores { get; set; }
 	}
 }
